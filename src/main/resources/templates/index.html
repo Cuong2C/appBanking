@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banking System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center text-danger m-5">Banking System</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-success">Account</h2>
+                <table class="table table-striped " border=1>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full Name</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="account-table">
+                        <!-- Table rows will be populated using JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-success">Send Money</h2>
+                <a class="btn btn-primary" href="/send" role="button">Send Money</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function fetchBankAccounts() {
+            fetch('/account')
+                .then(response => response.json())
+                .then(data => populateBankAccounts(data));
+        }
+
+        function populateBankAccounts(accounts) {
+            var tbody = document.querySelector('#account-table');
+            tbody.innerHTML = '';
+
+            accounts.forEach(function(account) {
+                var row = document.createElement('tr');
+                row.innerHTML = '<td>' + account.id + '</td>' +
+                                '<td>' + account.fullName + '</td>' +
+                                '<td>' + account.balance + '</td>';
+                tbody.appendChild(row);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchBankAccounts();
+        });
+    </script>
+</body>
+</html>
+

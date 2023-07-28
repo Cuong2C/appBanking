@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Send Money</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div class="container">
+		<h2 class="text-success m-5 text-center">Send Money</h2>
+		<form class="m-5" action="/sendMoney" method="post">
+			<div class="form-group">
+				<label>From bank account ID</label> <input type="number"
+					class="form-control" id="fromID" name="fromID">
+			</div>
+			<div class="form-group">
+				<label>To bank account ID</label> <input type="number"
+					class="form-control" id="toID" name="toID">
+			</div>
+			<div class="form-group">
+				<label>Amount</label> <input type="number" class="form-control"
+					id="amount" name="amount">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
